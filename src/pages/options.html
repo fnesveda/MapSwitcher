@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MapSwitcher preferences</title>
+		<meta charset="utf-8">
+		<style>
+			.options-group:not(:last-of-type) {
+				margin-bottom: 16px;
+			}
+			.options-group-header {
+				font-size: 1.2em;
+				margin-bottom: 5px;
+			}
+			.options-group label {
+				display: block;
+				margin-top: 2px;
+				margin-bottom: 2px;
+			}
+			label input, label span {
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="preferences">
+			<div id="general-preferences" class="options-group">
+				<div class="options-group-header" i18n-id="general_preferences_header">General preferences</div>
+				<label>
+					<input type="checkbox" id="activate-new-tab-checkbox">
+					<span i18n-id="activate_new_tab">Activate newly opened tabs</span>
+				</label>
+			</div>
+			<div id="visible-buttons" class="options-group">
+				<div class="options-group-header" i18n-id="visible_buttons_header">Visible buttons</div>
+				<label>
+					<input type="checkbox" id="show-mapycz-button-checkbox">
+					<span i18n-id="mapy_cz">Mapy.cz</span>
+				</label>
+				<label>
+					<input type="checkbox" id="show-gmaps-button-checkbox">
+					<span i18n-id="google_maps">Google Maps</span>
+				</label>
+				<label>
+					<input type="checkbox" id="show-geoportal-button-checkbox">
+					<span i18n-id="geoportal_gov_cz">Geoportal.gov.cz</span>
+				</label>
+			</div>
+		</div>
+		<script src="../scripts/js/options.js"></script>
+		<script src="../scripts/js/pages/options.js"></script>
+		<script src="../scripts/js/localize.js"></script>
+	</body>
+</html>

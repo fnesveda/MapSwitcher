@@ -1,0 +1,75 @@
+// construct the Google Maps url from the universal map location representation
+function universalToGMUrl(universal) {
+	var data = "";
+	var zoom = universal.zoom + "z";
+	
+	// zoom values are different for satellite view
+	if (universal.type == "satellite") {
+		data = "data=!3m1!1e3";
+		zoom = 51 * Math.pow(2, 21 - universal.zoom);
+		zoom = zoom + "m";
+	}
+	
+	var lon = universal.lon;
+	var lat = universal.lat;
+	
+	// put the URL together
+	var url = "https://www.google.com/maps/@" + lat + "," + lon + "," + zoom + "/" + data;
+	return url;
+}
+
+// parse the Google Maps url to the universal map location representation
+function GMUrlToUniversal(url) {
+	// check if maps are in satellite mode, or not
+	var type = "basic";
+	if (url.indexOf("!3m1!1e3") > 0) {
+		type = "satellite";
+	}
+	
+	// get only the location and zoom part from the address
+	var addr = url.substr(url.indexOf("@") + 1);
+	var slashPos = addr.indexOf("/");
+	if (slashPos > 0) {
+		addr = addr.substr(0, slashPos);
+	}
+	
+	// extract the position and zoom fields from the address
+	var lat, lon, zoom;
+	var addrFields = addr.split(",");
+	if (addrFields.length >= 2) {
+		lat = addrFields[0];
+		lon = addrFields[1];
+		zoom = addrFields[2];
+	}
+	else {
+		// the address has probably not loaded yet, and it's still just google.com/maps
+		// just return Prague then
+		lat = "50.0595854";
+		lon = "14.3255392";
+		zoom = "11z";
+	}
+	
+	// zoom has a different format in satellite and normal view
+	if (type == "basic") {
+		zoom = zoom.substr(0, zoom.indexOf("z"));
+		zoom = parseFloat(zoom);
+		if (isNaN(zoom)) { // maybe we're in Street View and we can't parse zoom
+			zoom = 15;
+		}
+	}
+	else if (type == "satellite") {
+		zoom = zoom.substr(0, zoom.indexOf("m"));
+		zoom = parseFloat(zoom);
+		zoom = 21 - Math.log2(zoom / 51);
+	}
+	
+	// put it all together
+	var mapInfo = {
+		type: type,
+		lat: lat,
+		lon: lon,
+		zoom: zoom,
+	};
+	
+	return mapInfo;
+}
