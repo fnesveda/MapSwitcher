@@ -21,8 +21,10 @@ function universalToGMUrl(universal) {
 // parse the Google Maps url to the universal map location representation
 function GMUrlToUniversal(url) {
 	// check if maps are in satellite mode, or not
+	// based on https://mstickles.wordpress.com/2015/06/12/gmaps-urls-options/
+	// the URL should be parsed more thoroughly if we wanted to do this properly, but this seems to work fine for our use case
 	var type = "basic";
-	if (url.indexOf("!3m1!1e3") > 0) {
+	if (RegExp("!3m.!1e3").test(url)) {
 		type = "satellite";
 	}
 	
