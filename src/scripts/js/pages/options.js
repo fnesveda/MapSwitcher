@@ -19,3 +19,13 @@ function loadOptionsToElements() {
 
 document.addEventListener("DOMContentLoaded", loadOptionsToElements);
 document.querySelectorAll("input").forEach(function(elem) {elem.addEventListener("change", saveOptionsFromElements);});
+
+// If browser is Opera, show the Opera Google maps warning
+var operaWarning = document.getElementById("google-maps-opera-warning");
+if (operaWarning != null) {
+	if (/opera|opr/.test(navigator.userAgent)) {
+		operaWarning.style.display = "block";
+	} else {
+		operaWarning.style.display = "none";
+	}
+}
