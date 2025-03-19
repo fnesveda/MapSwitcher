@@ -10,7 +10,7 @@ About
 -----
 *MapSwitcher* is a small browser extension which adds buttons to various map services for opening the displayed location in a different service.
 
-Currently supported is switching between Google Maps and Mapy&#46;cz.
+Currently supported is switching between Google Maps, Mapy&#46;cz and OpenStreetMap.
 
 This is a small summer project which I did to get some practice with developing browser extensions. There are a few similar projects available, but I didn't like their user experience, so I wanted to make a free, simple, open source alternative which would suit my needs and would integrate well with the supported services.
 
@@ -31,7 +31,7 @@ In the extension options you can decide which buttons will be shown, as well as 
 Developing
 ----------
 *MapSwitcher* is a fairly standard WebExtension, prepared to work in all the major browsers supporting WebExtensions.
-Currently it is tested to work in Google Chrome, Mozilla Firefox and Opera, with support for Microsoft Edge coming as soon as Edge officially switches to a Chromium base in the stable releases.
+Currently it is tested to work in Google Chrome, Mozilla Firefox and Opera, and it probably supports Edge as well.
 
 The extension injects content scripts to the supported services, which on load of the page insert the desired buttons to the DOM.
 When clicking those buttons, the currently displayed location gets extracted from the page URL and gets converted to the coordinate system used by the target service,
@@ -47,4 +47,4 @@ Licensing
 The code in this project is licensed under the MIT license.
 Everybody is welcome to use, change and modify the project as they see fit.
 
-The Google Maps and Mapy&#46;cz logos are registered trademarks of their respective owners, and are used within this project only for identification purposes.
+The Google Maps, Mapy&#46;cz and OpenStreetMap logos are registered trademarks of their respective owners, and are used within this project only for identification purposes.

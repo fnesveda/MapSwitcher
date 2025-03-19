@@ -13,7 +13,7 @@ function waitForElement(selector, timeout) {
 		if (document.querySelector(selector)) {
 			return resolve(document.querySelector(selector));
 		}
-
+		
 		const observer = new MutationObserver(() => {
 			let element = document.querySelector(selector);
 			if (element) {
@@ -21,17 +21,17 @@ function waitForElement(selector, timeout) {
 				return resolve(element);
 			}
 		});
-
+		
 		observer.observe(document.body, {
 			childList: true,
 			subtree: true
 		});
-
+		
 		if (document.querySelector(selector)) {
 			observer.disconnect();
 			return resolve(document.querySelector(selector));
 		}
-
+		
 		if (timeout) {
 			setTimeout(() => {
 				observer.disconnect();

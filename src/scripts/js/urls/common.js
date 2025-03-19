@@ -12,10 +12,10 @@ function getConverterForCurrentService() {
 function getMapInfo() {
 	const service = detectCurrentMapService();
 	if (!service) throw new Error("No map service detected");
-
+	
 	const converter = converters[service];
 	if (!converter) throw new Error(`No converter registered for ${service}`);
-
+	
 	return converter.urlToUniversal(location.href);
 }
 
