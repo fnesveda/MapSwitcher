@@ -1,6 +1,9 @@
 // adds map switcher buttons to Google Maps
 async function addButtonsToGMaps() {
 	var options = await loadOptionsFromStorage();
+	
+	const currentMapInfo = getMapInfo();
+	
 	// remove the old button wrapper if present
 	var buttonWrapper = document.getElementById("map-switch-button-wrapper");
 	if (buttonWrapper != null) {
@@ -19,9 +22,12 @@ async function addButtonsToGMaps() {
 	
 	// and last the actual buttons
 	if (options.showMapyczButton) {
-		var mapyCZSwitchButton = document.createElement("button");
+		var mapyCZSwitchButton = document.createElement("a");
 		mapyCZSwitchButton.setAttribute("class", "map-switch-button map-switch-button-mapy-cz");
-		mapyCZSwitchButton.addEventListener("click", function(e) { switchMapTo("mapycz", e.currentTarget); });
+		mapyCZSwitchButton.setAttribute("href", getDestinationUrl("mapycz", currentMapInfo));
+		mapyCZSwitchButton.setAttribute("target", "_blank");
+		mapyCZSwitchButton.setAttribute("rel", "noopener");
+		mapyCZSwitchButton.addEventListener("mouseenter", updateButtonHrefs)
 		buttonContainer.appendChild(mapyCZSwitchButton);
 	}
 	
@@ -37,11 +43,4 @@ async function addButtonsToGMaps() {
 	}
 }
 
-// normally, we shouldn't need to wait for window.onload, as content scripts should be injected on document_idle by default
-// but something changed in Firefox 67+ and the content scripts are sometimes executed earlier
-if (document.readyState === 'complete') { // window.onload has already fired
-	addButtonsToGMaps();
-}
-else {
-	window.addEventListener('load', addButtonsToGMaps);
-}
+runOnPageLoad(addButtonsToGMaps);

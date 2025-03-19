@@ -1,46 +1,29 @@
-// switch map provider from the current one to the destination one
-async function switchMapTo(destination, sourceButton) {
-	// if the map switch was successful
-	var success = false;
-	
-	// animate the button that was clicked
-	sourceButton.classList.add("map-switch-button-working");
-	
-	// extract the current map position and zoom and type from the current URL
-	// choose how to do it based on the current map provider
-	var mapInfo = null;
+function getMapInfo() {
 	if (location.hostname.indexOf("google.") >= 0) {
-		mapInfo = GMUrlToUniversal(location.href);
+		return GMUrlToUniversal(location.href);
 	}
 	else if (location.hostname.indexOf("mapy.cz") >= 0) {
-		mapInfo = MCZurlToUniversal(location.href);
+		return MCZurlToUniversal(location.href);
 	}
-	
-	// based on the current map info, switch to the destination map provider
-	if (mapInfo != null) {
-		var destURL = "";
-		if (destination == "mapycz") {
-			// Mapy.cz have a straightforward conversion
-			destURL = universalToMCZUrl(mapInfo);
-		}
-		else if (destination == "googlemaps") {
-			// Google Maps have a straightforward conversion
-			destURL = universalToGMUrl(mapInfo);
-		}
-		if (destURL.length > 0) {
-			// this could be done with window.open for Mapy.cz and Google Maps
-			// but we can't do it asynchronously from the content script without it being flagged as a popup
-			// so let's just do it from a background page
-			chrome.runtime.sendMessage({"command": "openTab", "url": destURL});
-			success = true;
-		}
-	}
-	// stop the clicked button animation
-	sourceButton.classList.remove("map-switch-button-working");
-	
-	// if the opening of the destination map provider failed, show the user an error animation on the clicked button
-	if (!success) {
-		sourceButton.classList.add("map-switch-button-error");
-		setTimeout(function() { sourceButton.classList.remove("map-switch-button-error"); }, 2500);
-	}
+	return null;
 }
+
+function getDestinationUrl(destination, mapInfo) {
+	if (destination == "googlemaps") {
+		return universalToGMUrl(mapInfo);
+	}
+	else if (destination == "mapycz") {
+		return universalToMCZUrl(mapInfo);
+	}
+	return "";
+}
+
+function runOnPageLoad(callback) {
+	// normally, we shouldn't need to wait for window.onload, as content scripts should be injected on document_idle by default
+	// but something changed in Firefox 67+ and the content scripts are sometimes executed earlier
+	if (document.readyState === 'complete') {
+		callback();
+	} else {
+		window.addEventListener('load', callback);
+	}
+};

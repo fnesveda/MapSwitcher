@@ -2,7 +2,6 @@ var defaultOptions = {
 	optionsVersion: "1.0",
 	showMapyczButton: true,
 	showGMapsButton: true,
-	activateNewTab: true,
 };
 
 // Saves options to chrome.storage.sync, returns a promise to maybe let the user know when it's done

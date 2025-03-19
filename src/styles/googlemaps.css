@@ -27,6 +27,8 @@
 
 .map-switch-button {
 	width: var(--button-width);
+	display: inline-block;
+	box-sizing: border-box;
 	height: 30px;
 	padding: 4px;
 	background-image: var(--button-background-image);
@@ -48,40 +50,4 @@
 .map-switch-button-mapy-cz {
 	--button-width: 32px;
 	--button-background-image: var(--mapy-cz-button-image);
-}
-
-.map-switch-button-working {
-	background-image: var(--button-background-image), radial-gradient(calc(var(--button-width) - 16px) 16px at 50% 100%, var(--button-progress-indicator-color), var(--button-background-color)) !important;
-	background-origin: content-box, padding-box;
-	background-size: contain, 200% !important;
-	animation: map-switch-button-working-animation 3s ease infinite;
-	cursor: progress;
-}
-
-@keyframes map-switch-button-working-animation {
-	0% {
-		background-position: 50% 50%, 0% 100%;
-	}
-	50% {
-		background-position: 50% 50%, 100% 100%;
-	}
-	100% {
-		background-position: 50% 50%, 0% 100%;
-	}
-}
-
-.map-switch-button-error {
-	animation: map-switch-button-error-animation 2s ease 1;
-}
-
-@keyframes map-switch-button-error-animation {
-	0% {
-		box-shadow: none;
-	}
-	50% {
-		box-shadow: inset 0 0 16px 6px var(--button-error-indicator-color);
-	}
-	100% {
-		box-shadow: none;
-	}
 }

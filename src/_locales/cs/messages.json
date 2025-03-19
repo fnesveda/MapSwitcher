@@ -1,8 +1,6 @@
 {
 	"extension_name": {"message": "MapSwitcher"},
 	"extension_description": {"message": "Přidá do různých mapových služeb tlačítka pro otevření stejné pozice na mapě v jiných mapových službách."},
-	"general_preferences_header": {"message": "Všeobecné možnosti"},
-	"activate_new_tab": {"message": "Aktivovat nově otevřené záložky"},
 	"visible_buttons_header": {"message": "Zobrazit tlačítka na přepínání do"},
 	"google_maps": {"message": "Mapy Google"},
 	"mapy_cz": {"message": "Mapy.cz"}

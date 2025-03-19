@@ -1,8 +1,6 @@
 {
 	"extension_name": {"message": "MapSwitcher"},
 	"extension_description": {"message" :"Adds buttons to various map services for opening the same location in different map services."},
-	"general_preferences_header": {"message": "General preferences"},
-	"activate_new_tab": {"message": "Activate newly opened tabs"},
 	"visible_buttons_header": {"message": "Show buttons to switch to"},
 	"google_maps": {"message": "Google Maps"},
 	"mapy_cz": {"message": "Mapy.cz"}

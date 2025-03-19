@@ -37,6 +37,7 @@
 				"scripts/js/options.js",
 				"scripts/js/urls/googlemaps.js",
 				"scripts/js/urls/mapycz.js",
+				"scripts/js/buttons/common.js",
 				"scripts/js/buttons/googlemaps.js"
 			],
 			"css": ["styles/common.css", "styles/googlemaps.css"]
@@ -47,15 +48,12 @@
 				"scripts/js/options.js",
 				"scripts/js/urls/googlemaps.js",
 				"scripts/js/urls/mapycz.js",
+				"scripts/js/buttons/common.js",
 				"scripts/js/buttons/mapycz.js"
 			],
 			"css": ["styles/common.css", "styles/mapycz.css"]
 		}
 	],
-	"background": {
-		"scripts": ["scripts/js/background/background.js", "scripts/js/options.js"],
-		"persistent": false
-	},
 	"options_ui": {
 		"page": "pages/options.html",
 		"chrome_style": true
