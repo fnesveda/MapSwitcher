@@ -1,0 +1,14 @@
+.map-switch-button .icon {
+	background-origin: content-box;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.map-switch-button[data-map-switcher-destination="GOOGLE_MAPS"] .icon {
+	background-image: var(--google-maps-bw-button-image);
+}
+
+.map-switch-button[data-map-switcher-destination="MAPY_CZ"] .icon {
+	background-image: var(--mapy-cz-bw-button-image);
+}

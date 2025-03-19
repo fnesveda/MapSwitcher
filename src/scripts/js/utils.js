@@ -14,17 +14,11 @@ function waitForElement(selector, timeout) {
 			return resolve(document.querySelector(selector));
 		}
 
-		const observer = new MutationObserver(mutations => {
-			if (mutations.length === 0) return;
-			for (const mutation of mutations) {
-				if (mutation.addedNodes?.length) {
-					for (const node of mutation.addedNodes) {
-						if (node.nodeType === 1 && node.matches(selector)) {
-							observer.disconnect();
-							return resolve(node);
-						}
-					}
-				}
+		const observer = new MutationObserver(() => {
+			let element = document.querySelector(selector);
+			if (element) {
+				observer.disconnect();
+				return resolve(element);
 			}
 		});
 
@@ -32,7 +26,12 @@ function waitForElement(selector, timeout) {
 			childList: true,
 			subtree: true
 		});
-		
+
+		if (document.querySelector(selector)) {
+			observer.disconnect();
+			return resolve(document.querySelector(selector));
+		}
+
 		if (timeout) {
 			setTimeout(() => {
 				observer.disconnect();
@@ -41,3 +40,17 @@ function waitForElement(selector, timeout) {
 		}
 	});
 }
+
+const getMapServiceName = (service) => {
+	return chrome.i18n.getMessage(service);
+}
+
+const detectCurrentMapService = () => {
+	const hostname = location.hostname;
+	for (const [service, hostnameFeature] of Object.entries(MAP_SERVICE_HOSTNAME_FEATURE)) {
+		if (hostname.includes(hostnameFeature)) {
+			return service;
+		}
+	}
+	throw new Error(`Unknown map service for hostname: ${hostname}`);
+};

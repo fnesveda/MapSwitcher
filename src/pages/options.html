@@ -30,18 +30,23 @@
 			<div id="visible-buttons" class="options-group">
 				<div class="options-group-header" i18n-id="visible_buttons_header">Visible buttons</div>
 				<label>
-					<input type="checkbox" id="show-mapycz-button-checkbox">
-					<span i18n-id="mapy_cz">Mapy.cz</span>
+					<input type="checkbox" class="show-button-checkbox" data-service="GOOGLE_MAPS">
+					<span i18n-id="GOOGLE_MAPS">Google Maps</span>
 				</label>
 				<label>
-					<input type="checkbox" id="show-gmaps-button-checkbox">
-					<span i18n-id="google_maps">Google Maps</span>
+					<input type="checkbox" class="show-button-checkbox" data-service="MAPY_CZ">
+					<span i18n-id="MAPY_CZ">Mapy.cz</span>
+				</label>
+				<label>
+					<input type="checkbox" class="show-button-checkbox" data-service="OPEN_STREET_MAP">
+					<span i18n-id="OPEN_STREET_MAP">OpenStreetMap</span>
 				</label>
 			</div>
 		</div>
 		<div id="google-maps-opera-warning">
 			If you want this to work on Google Maps in Opera, you need to enable "Allow access to search page results" for this extensions.
 		</div>
+		<script src="../scripts/js/consts.js"></script>
 		<script src="../scripts/js/options.js"></script>
 		<script src="../scripts/js/pages/options.js"></script>
 		<script src="../scripts/js/localize.js"></script>

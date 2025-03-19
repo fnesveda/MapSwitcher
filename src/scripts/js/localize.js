@@ -3,7 +3,9 @@ function localizeElement(elem) {
 }
 
 function localizePage() {
-	document.querySelectorAll("[i18n-id]").forEach(elem => localizeElement(elem));
+	for (const element of document.querySelectorAll("[i18n-id]")) {
+		localizeElement(element);
+	}
 }
 
 window.addEventListener("load", localizePage);

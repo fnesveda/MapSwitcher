@@ -19,27 +19,48 @@
 	"content_scripts": [
 		{
 			"matches": ["*://*.google.com/maps*", "*://*.google.cz/maps*", "*://*.google.sk/maps*"],
-			"js": ["scripts/js/utils.js",
+			"js": [
+				"scripts/js/consts.js",
+				"scripts/js/utils.js",
 				"scripts/js/options.js",
 				"scripts/js/urls/common.js",
-				"scripts/js/urls/googlemaps.js",
-				"scripts/js/urls/mapycz.js",
+				"scripts/js/urls/google_maps.js",
+				"scripts/js/urls/mapy_cz.js",
+				"scripts/js/urls/open_street_map.js",
 				"scripts/js/buttons/common.js",
-				"scripts/js/buttons/googlemaps.js"
+				"scripts/js/buttons/google_maps.js"
 			],
-			"css": ["styles/common.css", "styles/googlemaps.css"]
+			"css": ["styles/common.css", "styles/google_maps.css"]
 		},
 		{
 			"matches": ["*://*.mapy.cz/*"],
-			"js": ["scripts/js/utils.js",
+			"js": [
+				"scripts/js/consts.js",
+				"scripts/js/utils.js",
 				"scripts/js/options.js",
 				"scripts/js/urls/common.js",
-				"scripts/js/urls/googlemaps.js",
-				"scripts/js/urls/mapycz.js",
+				"scripts/js/urls/google_maps.js",
+				"scripts/js/urls/mapy_cz.js",
+				"scripts/js/urls/open_street_map.js",
 				"scripts/js/buttons/common.js",
-				"scripts/js/buttons/mapycz.js"
+				"scripts/js/buttons/mapy_cz.js"
 			],
-			"css": ["styles/common.css", "styles/mapycz.css"]
+			"css": ["styles/common.css", "styles/mapy_cz.css"]
+		},
+		{
+			"matches": ["*://*.openstreetmap.org/*"],
+			"js": [
+				"scripts/js/consts.js",
+				"scripts/js/utils.js",
+				"scripts/js/options.js",
+				"scripts/js/urls/common.js",
+				"scripts/js/urls/google_maps.js",
+				"scripts/js/urls/mapy_cz.js",
+				"scripts/js/urls/open_street_map.js",
+				"scripts/js/buttons/common.js",
+				"scripts/js/buttons/open_street_map.js"
+			],
+			"css": ["styles/common.css", "styles/open_street_map.css"]
 		}
 	],
 	"options_ui": {

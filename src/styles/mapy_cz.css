@@ -11,22 +11,26 @@
 	font-size: 14px;
 }
 
-.map-switch-button::before {
-	content: "v";
+.map-switch-button .map-switch-button-icon {
 	color: transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
 	display: inline-block;
-}
-
-.map-switch-button-google-maps::before {
 	width: 20px;
 	height: 20px;
 	position: relative;
-	top: -1px;
 	margin: 0 2px;
+}
+
+.map-switch-button[data-map-switcher-destination="GOOGLE_MAPS"] .map-switch-button-icon {
+	top: -1px;
 	background-image: var(--google-maps-button-image);
+}
+
+.map-switch-button[data-map-switcher-destination="OPEN_STREET_MAP"] .map-switch-button-icon {
+	top: 0px;
+	background-image: var(--open-street-map-button-image);
 }
 
 @media (max-width: 1300px) {

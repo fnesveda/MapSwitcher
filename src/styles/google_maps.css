@@ -47,7 +47,12 @@
 	border-right: solid 1px var(--button-separator-color);
 }
 
-.map-switch-button-mapy-cz {
+.map-switch-button[data-map-switcher-destination="MAPY_CZ"] {
 	--button-width: 32px;
 	--button-background-image: var(--mapy-cz-button-image);
+}
+
+.map-switch-button[data-map-switcher-destination="OPEN_STREET_MAP"] {
+	--button-width: 32px;
+	--button-background-image: var(--open-street-map-button-image);
 }

@@ -1,0 +1,11 @@
+const MAP_SERVICE = {
+    GOOGLE_MAPS: 'GOOGLE_MAPS',
+    MAPY_CZ: 'MAPY_CZ',
+    OPEN_STREET_MAP: 'OPEN_STREET_MAP',
+};
+
+const MAP_SERVICE_HOSTNAME_FEATURE = {
+    [MAP_SERVICE.GOOGLE_MAPS]: 'google.',
+    [MAP_SERVICE.MAPY_CZ]: 'mapy.cz',
+    [MAP_SERVICE.OPEN_STREET_MAP]: 'openstreetmap.org',
+};

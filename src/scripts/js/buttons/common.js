@@ -1,17 +1,18 @@
-function updateButtonHrefs() {
+function updateButtonHref(destination) {
 	const mapInfo = getMapInfo();
-
-	if (mapInfo == null) {
-		return;
-	}
-
-	const mapyCZSwitchButton = document.querySelector(".map-switch-button-mapy-cz");
-	if (mapyCZSwitchButton != null) {
-		mapyCZSwitchButton.setAttribute("href", getDestinationUrl("mapycz", mapInfo));
-	}
-
-	const GMSwitchButton = document.querySelector(".map-switch-button-google-maps");
-	if (GMSwitchButton != null) {
-		GMSwitchButton.setAttribute("href", getDestinationUrl("googlemaps", mapInfo));
-	}
+	
+	const button = document.querySelector(`.map-switch-button[data-map-switcher-destination="${destination}"]`);
+	if (button) button.setAttribute("href", getDestinationUrl(destination, mapInfo));
 }
+
+const buttonAdders = [];
+function registerButtonAdder(buttonAdder) {
+	buttonAdders.push(buttonAdder);
+}
+
+runOnPageLoad(async () => {
+	const currentMapInfo = getMapInfo();
+	const options = await loadOptionsFromStorage();
+	
+	await Promise.all(buttonAdders.map((buttonAdder) => buttonAdder({ options, currentMapInfo })));
+});
