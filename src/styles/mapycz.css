@@ -1,12 +1,37 @@
+#map-switch-button-wrapper {
+	pointer-events: auto;
+}
+
+.map-switch-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 4px 8px;
+	color: rgba(1, 30, 57, 0.6);
+	font-size: 14px;
+}
+
 .map-switch-button::before {
 	content: "v";
 	color: transparent;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	display: inline-block;
 }
 
 .map-switch-button-google-maps::before {
 	width: 20px;
+	height: 20px;
+	position: relative;
+	top: -1px;
+	margin: 0 2px;
 	background-image: var(--google-maps-button-image);
 }
+
+@media (max-width: 1300px) {
+	.map-switch-button-text {
+		display: none;
+	}
+}
+
