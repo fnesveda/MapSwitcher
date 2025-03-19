@@ -1,7 +1,7 @@
 // construct the Google Maps url from the universal map location representation
 function universalToGMUrl(universal) {
-	var data = "";
-	var zoom = universal.zoom + "z";
+	let data = "";
+	let zoom = universal.zoom + "z";
 	
 	// zoom values are different for satellite view
 	if (universal.type == "satellite") {
@@ -10,12 +10,10 @@ function universalToGMUrl(universal) {
 		zoom = zoom + "m";
 	}
 	
-	var lon = universal.lon;
-	var lat = universal.lat;
+	const lon = universal.lon;
+	const lat = universal.lat;
 	
-	// put the URL together
-	var url = "https://www.google.com/maps/@" + lat + "," + lon + "," + zoom + "/" + data;
-	return url;
+	return `https://www.google.com/maps/@${lat},${lon},${zoom}/${data}`;
 }
 
 // parse the Google Maps url to the universal map location representation
@@ -23,21 +21,21 @@ function GMUrlToUniversal(url) {
 	// check if maps are in satellite mode, or not
 	// based on https://mstickles.wordpress.com/2015/06/12/gmaps-urls-options/
 	// the URL should be parsed more thoroughly if we wanted to do this properly, but this seems to work fine for our use case
-	var type = "basic";
+	let type = "basic";
 	if (RegExp("!3m.!1e3").test(url)) {
 		type = "satellite";
 	}
 	
 	// get only the location and zoom part from the address
-	var addr = url.substr(url.indexOf("@") + 1);
-	var slashPos = addr.indexOf("/");
+	let addr = url.substr(url.indexOf("@") + 1);
+	const slashPos = addr.indexOf("/");
 	if (slashPos > 0) {
 		addr = addr.substr(0, slashPos);
 	}
 	
 	// extract the position and zoom fields from the address
-	var lat, lon, zoom;
-	var addrFields = addr.split(",");
+	let lat, lon, zoom;
+	const addrFields = addr.split(",");
 	if (addrFields.length >= 2) {
 		lat = addrFields[0];
 		lon = addrFields[1];
@@ -66,12 +64,10 @@ function GMUrlToUniversal(url) {
 	}
 	
 	// put it all together
-	var mapInfo = {
+	return {
 		type: type,
 		lat: lat,
 		lon: lon,
 		zoom: zoom,
 	};
-	
-	return mapInfo;
 }

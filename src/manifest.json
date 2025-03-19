@@ -1,24 +1,10 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "__MSG_extension_name__",
 	"description": "__MSG_extension_description__",
 	"default_locale": "en",
 	"version": "1.0.1",
-	"applications": {
-		"gecko": {
-			"id": "{0516BC41-6FA3-4326-87FE-7EA9101412FE}"
-		}
-	},
 	"icons": {
-		"16":  "icons/icon-16.png",
-		"32":  "icons/icon-32.png",
-		"48":  "icons/icon-48.png",
-		"96":  "icons/icon-96.png",
-		"128": "icons/icon-128.png",
-		"256": "icons/icon-256.png",
-		"480": "icons/icon-full.png"
-	},
-	"default_icon": {
 		"16":  "icons/icon-16.png",
 		"32":  "icons/icon-32.png",
 		"48":  "icons/icon-48.png",
@@ -33,8 +19,9 @@
 	"content_scripts": [
 		{
 			"matches": ["*://*.google.com/maps*", "*://*.google.cz/maps*", "*://*.google.sk/maps*"],
-			"js": ["scripts/js/main.js",
+			"js": ["scripts/js/utils.js",
 				"scripts/js/options.js",
+				"scripts/js/urls/common.js",
 				"scripts/js/urls/googlemaps.js",
 				"scripts/js/urls/mapycz.js",
 				"scripts/js/buttons/common.js",
@@ -44,8 +31,9 @@
 		},
 		{
 			"matches": ["*://*.mapy.cz/*"],
-			"js": ["scripts/js/main.js",
+			"js": ["scripts/js/utils.js",
 				"scripts/js/options.js",
+				"scripts/js/urls/common.js",
 				"scripts/js/urls/googlemaps.js",
 				"scripts/js/urls/mapycz.js",
 				"scripts/js/buttons/common.js",
@@ -56,6 +44,6 @@
 	],
 	"options_ui": {
 		"page": "pages/options.html",
-		"chrome_style": true
+		"open_in_tab": false
 	}
 }

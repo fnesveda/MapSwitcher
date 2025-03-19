@@ -1,4 +1,4 @@
-var defaultOptions = {
+const defaultOptions = {
 	optionsVersion: "1.0",
 	showMapyczButton: true,
 	showGMapsButton: true,
