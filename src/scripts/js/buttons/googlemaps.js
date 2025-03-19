@@ -25,13 +25,6 @@ async function addButtonsToGMaps() {
 		buttonContainer.appendChild(mapyCZSwitchButton);
 	}
 	
-	if (options.showGeoportalButton) {
-		var geoportalSwitchButton = document.createElement("button");
-		geoportalSwitchButton.setAttribute("class", "map-switch-button map-switch-button-geoportal");
-		geoportalSwitchButton.addEventListener("click", function(e) { switchMapTo("geoportal", e.currentTarget); });
-		buttonContainer.appendChild(geoportalSwitchButton);
-	}
-	
 	// add the buttons to the DOM, if there are some
 	if (buttonContainer.hasChildNodes()) {
 		buttonWrapper.appendChild(buttonContainer);

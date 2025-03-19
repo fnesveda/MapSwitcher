@@ -10,9 +10,9 @@ About
 -----
 *MapSwitcher* is a small browser extension which adds buttons to various map services for opening the displayed location in a different service.
 
-Currently supported is switching between Google Maps, Mapy&#46;cz and Geoportal&#46;gov&#46;cz.
+Currently supported is switching between Google Maps and Mapy&#46;cz.
 
-This is a small summer project which I did to get some practice with developing browser extensions. There are a few similar projects available, but none support Geoportal.gov.cz and I didn't like their user experience, so I wanted to make a free, simple, open source alternative which would suit my needs and would integrate well with the supported services.
+This is a small summer project which I did to get some practice with developing browser extensions. There are a few similar projects available, but I didn't like their user experience, so I wanted to make a free, simple, open source alternative which would suit my needs and would integrate well with the supported services.
 
 
 Installation
@@ -24,7 +24,7 @@ To install, download the extension either from the [Chrome Web Store](https://ch
 
 Usage
 -----
-*MapSwitcher* adds buttons to the tools sections of Google Maps and Mapy&#46;cz, clicking on which opens the currently displayed location in Google Maps, Mapy&#46;cz or Geoportal&#46;gov&#46;cz.
+*MapSwitcher* adds buttons to the tools sections of Google Maps and Mapy&#46;cz, clicking on which opens the currently displayed location in Google Maps or Mapy&#46;cz.
 In the extension options you can decide which buttons will be shown, as well as whether the new map will open in a new tab.
 
 
@@ -37,12 +37,6 @@ The extension injects content scripts to the supported services, which on load o
 When clicking those buttons, the currently displayed location gets extracted from the page URL and gets converted to the coordinate system used by the target service,
 from which the target URL is assembled and then opened.
 
-### Quirks and perks
-Most of the work the extension does happens in content scripts, except for the retrieval of Geoportal&#46;gov&#46;cz URLs.
-Geoportal uses a private API to request permalinks to a map view of a given location, and the API does not accept cross-origin requests.
-To work around that, we need to send requests to the API from a background script, which avoids the CORS problems.
-
-
 Links
 -----
 - [Project homepage](https://www.nesveda.com/projects/MapSwitcher/)
@@ -53,4 +47,4 @@ Licensing
 The code in this project is licensed under the MIT license.
 Everybody is welcome to use, change and modify the project as they see fit.
 
-The Google Maps, Mapy&#46;cz and Geoportal&#46;gov&#46;cz logos are registered trademarks of their respective owners, and are used within this project only for identification purposes.
+The Google Maps and Mapy&#46;cz logos are registered trademarks of their respective owners, and are used within this project only for identification purposes.

@@ -5,6 +5,5 @@
 	"activate_new_tab": {"message": "Activate newly opened tabs"},
 	"visible_buttons_header": {"message": "Show buttons to switch to"},
 	"google_maps": {"message": "Google Maps"},
-	"mapy_cz": {"message": "Mapy.cz"},
-	"geoportal_gov_cz": {"message": "Geoportal.gov.cz"}
+	"mapy_cz": {"message": "Mapy.cz"}
 }

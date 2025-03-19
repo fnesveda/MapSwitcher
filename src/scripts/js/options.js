@@ -2,7 +2,6 @@ var defaultOptions = {
 	optionsVersion: "1.0",
 	showMapyczButton: true,
 	showGMapsButton: true,
-	showGeoportalButton: true,
 	activateNewTab: true,
 };
 

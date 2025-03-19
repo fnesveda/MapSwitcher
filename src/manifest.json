@@ -28,12 +28,11 @@
 		"480": "icons/icon-full.png"
 	},
 	"permissions": [
-		"https://geoportal.gov.cz/",
 		"storage"
 	],
 	"content_scripts": [
 		{
-			"matches": ["*://*.google.com/maps*", "*://*.google.cz/maps*"],
+			"matches": ["*://*.google.com/maps*", "*://*.google.cz/maps*", "*://*.google.sk/maps*"],
 			"js": ["scripts/js/main.js",
 				"scripts/js/options.js",
 				"scripts/js/urls/googlemaps.js",
@@ -54,7 +53,7 @@
 		}
 	],
 	"background": {
-		"scripts": ["scripts/js/background/background.js", "scripts/js/options.js", "scripts/js/urls/geoportal.js"],
+		"scripts": ["scripts/js/background/background.js", "scripts/js/options.js"],
 		"persistent": false
 	},
 	"options_ui": {

@@ -50,11 +50,6 @@
 	--button-background-image: var(--mapy-cz-button-image);
 }
 
-.map-switch-button-geoportal {
-	--button-width: 56px;
-	--button-background-image: var(--geoportal-button-image);
-}
-
 .map-switch-button-working {
 	background-image: var(--button-background-image), radial-gradient(calc(var(--button-width) - 16px) 16px at 50% 100%, var(--button-progress-indicator-color), var(--button-background-color)) !important;
 	background-origin: content-box, padding-box;

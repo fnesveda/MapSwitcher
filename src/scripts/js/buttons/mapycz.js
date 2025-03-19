@@ -7,17 +7,6 @@ async function addButtonsToMapyCZ() {
 	// remove the old buttons if they're present
 	mcButtonGroup.querySelectorAll(".map-switch-button").forEach(elem => elem.remove());
 	
-	// add GeoPortal button if desired
-	if (options.showGeoportalButton) {
-		var geoportalSwitchButton = document.createElement("button");
-		geoportalSwitchButton.setAttribute("class", "map-switch-button map-switch-button-geoportal");
-		geoportalSwitchButton.addEventListener("click", function(e) {switchMapTo("geoportal", e.currentTarget);});
-		var geoportalSwitchButtonSpan = document.createElement("span");
-		geoportalSwitchButtonSpan.innerText = "Geoportal";
-		geoportalSwitchButton.appendChild(geoportalSwitchButtonSpan);
-		mcButtonGroup.insertBefore(geoportalSwitchButton, mcButtonGroup.firstChild);
-	}
-	
 	// add Google Maps button if desired
 	if (options.showGMapsButton) {
 		var GMSwitchButton = document.createElement("button");

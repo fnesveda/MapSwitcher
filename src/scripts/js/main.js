@@ -27,26 +27,9 @@ async function switchMapTo(destination, sourceButton) {
 			// Google Maps have a straightforward conversion
 			destURL = universalToGMUrl(mapInfo);
 		}
-		else if (destination == "geoportal") {
-			// it's not so easy with geoportal
-			// we need to send a CORS request, but we can't do it from content scripts
-			// so we have to ask a background script to do the work for us
-			geoportalResult = await new Promise(function(resolve, reject) {
-				chrome.runtime.sendMessage({"command": "getGeoportalURL", "location": mapInfo}, function(response) {resolve(response);});
-			});
-			
-			// check whether the request was successful
-			if (geoportalResult.success) {
-				destURL = geoportalResult.result;
-			}
-			else {
-				console.error("Opening Geoportal unsuccessful:");
-				console.error(geoportalResult.result);
-			}
-		}
 		if (destURL.length > 0) {
 			// this could be done with window.open for Mapy.cz and Google Maps
-			// but we can't asynchronously open a Geoportal tab from the content script without it being flagged as a popup
+			// but we can't do it asynchronously from the content script without it being flagged as a popup
 			// so let's just do it from a background page
 			chrome.runtime.sendMessage({"command": "openTab", "url": destURL});
 			success = true;

@@ -1,8 +1,5 @@
 chrome.runtime.onMessage.addListener(function(request, sender, callback) {
-	if (request.command == "getGeoportalURL") {
-		geoportalToURL(request.location, callback);
-	}
-	else if (request.command == "openTab") {
+	if (request.command == "openTab") {
 		loadOptionsFromStorage().then(options => chrome.tabs.create({
 			url: request.url,
 			index: sender.tab.index + 1,
