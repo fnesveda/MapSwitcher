@@ -1,12 +1,13 @@
-registerConverter(MAP_SERVICE.OPEN_STREET_MAP, {
-	universalToUrl: function(universal) {
+class OpenStreetMapUrlConverter extends UrlConverter {
+	universalToUrl(universal) {
 		const lon = universal.lon;
 		const lat = universal.lat;
 		const zoom = Math.round(universal.zoom);
 		
 		return `https://www.openstreetmap.org/#map=${zoom}/${lat}/${lon}`;
-	},
-	urlToUniversal: function(url) {
+	}
+	
+	urlToUniversal(url) {
 		// get only the location and zoom part from the address
 		const addr = url.substr(url.indexOf("#map=") + 5);
 		
@@ -29,5 +30,7 @@ registerConverter(MAP_SERVICE.OPEN_STREET_MAP, {
 			lon: lon,
 			zoom: zoom,
 		};
-	},
-});
+	}
+}
+
+registerConverter(MAP_SERVICE.OPEN_STREET_MAP, OpenStreetMapUrlConverter);

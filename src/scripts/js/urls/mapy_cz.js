@@ -1,18 +1,19 @@
-registerConverter(MAP_SERVICE.MAPY_CZ, {
-	universalToUrl: function (universal) {
+class MapyCzUrlConverter extends UrlConverter {
+	universalToUrl(universal) {
 		let lon = universal.lon;
 		let lat = universal.lat;
 		let zoom = Math.round(universal.zoom);
 		
-		let type = "zakladni";
+		let type = this.extensionOptions.mapyCzUseOutdoorForBasic ? "turisticka" : "zakladni";
 		if (universal.type == "satellite") {
 			type = "letecka";
 		}
 		
 		// put the URL together
 		return `https://www.mapy.cz/${type}?x=${lon}&y=${lat}&z=${zoom}&l=0`;
-	},
-	urlToUniversal: function (url) {
+	}
+	
+	urlToUniversal(url) {
 		// check if maps are in satellite mode, or not
 		let type = "basic";
 		if ((url.indexOf("base=ophoto") >= 0) || (url.indexOf("letecka") >= 0)) {
@@ -29,7 +30,7 @@ registerConverter(MAP_SERVICE.MAPY_CZ, {
 		let zoom = 1;
 		
 		// parse the address parameters
-		for (field of addrFields) {
+		for (const field of addrFields) {
 			let par = field.split("=")[0];
 			let val = field.split("=")[1];
 			
@@ -51,5 +52,7 @@ registerConverter(MAP_SERVICE.MAPY_CZ, {
 			lon: lon,
 			zoom: zoom,
 		};
-	},
-});
+	}
+}
+
+registerConverter(MAP_SERVICE.MAPY_CZ, MapyCzUrlConverter);

@@ -5,6 +5,7 @@ const defaultOptions = {
 		[MAP_SERVICE.MAPY_CZ]: true,
 		[MAP_SERVICE.OPEN_STREET_MAP]: false,
 	},
+	mapyCzUseOutdoorForBasic: true,
 };
 
 // Saves options to chrome.storage.sync, returns a promise to maybe let the user know when it's done
@@ -23,14 +24,17 @@ async function loadOptionsFromStorage() {
 	}
 	if (retrievedStorage.options.optionsVersion === '1.0') {
 		// migrate from version 1.0 to 2.0
-		const migratedOptions = {
-			optionsVersion: "2.0",
-			shownButtons: {
-				[MAP_SERVICE.GOOGLE_MAPS]: retrievedStorage.options.showGMapsButton,
-				[MAP_SERVICE.MAPY_CZ]: retrievedStorage.options.showMapyczButton,
-				[MAP_SERVICE.OPEN_STREET_MAP]: false,
+		const migratedOptions = Object.assign(
+			{},
+			structuredClone(defaultOptions),
+			{
+				shownButtons: {
+					[MAP_SERVICE.GOOGLE_MAPS]: retrievedStorage.options.showGMapsButton,
+					[MAP_SERVICE.MAPY_CZ]: retrievedStorage.options.showMapyczButton,
+					[MAP_SERVICE.OPEN_STREET_MAP]: false,
+				},
 			},
-		};
+		)
 		await chrome.storage.sync.set({ options: migratedOptions });
 		return migratedOptions;
 	}

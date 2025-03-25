@@ -5,6 +5,7 @@ async function saveOptionsFromElements() {
 			key,
 			!!document.querySelector(`.show-button-checkbox[data-service="${key}"]`)?.checked,
 		])),
+		mapyCzUseOutdoorForBasic: document.querySelector("#mapy-cz-use-outdoor-for-basic")?.checked,
 	});
 }
 
@@ -17,6 +18,10 @@ async function loadOptionsToElements() {
 		if (checkbox) {
 			checkbox.checked = !!options.shownButtons[key];
 		}
+	}
+	const mapyCzUseOutdoorForBasicCheckbox = document.querySelector("#mapy-cz-use-outdoor-for-basic");
+	if (mapyCzUseOutdoorForBasicCheckbox) {
+		mapyCzUseOutdoorForBasicCheckbox.checked = !!options.mapyCzUseOutdoorForBasic;
 	}
 }
 

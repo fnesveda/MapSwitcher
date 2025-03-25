@@ -1,5 +1,5 @@
-registerConverter(MAP_SERVICE.GOOGLE_MAPS, {
-	universalToUrl: function (universal) {
+class GoogleMapsUrlConverter extends UrlConverter{
+	universalToUrl(universal) {
 		let data = "";
 		let zoom = universal.zoom + "z";
 		
@@ -14,8 +14,9 @@ registerConverter(MAP_SERVICE.GOOGLE_MAPS, {
 		const lat = universal.lat;
 		
 		return `https://www.google.com/maps/@${lat},${lon},${zoom}/${data}`;
-	},
-	urlToUniversal: function (url) {
+	}
+	
+	urlToUniversal(url) {
 		// check if maps are in satellite mode, or not
 		// based on https://mstickles.wordpress.com/2015/06/12/gmaps-urls-options/
 		// the URL should be parsed more thoroughly if we wanted to do this properly, but this seems to work fine for our use case
@@ -68,5 +69,7 @@ registerConverter(MAP_SERVICE.GOOGLE_MAPS, {
 			lon: lon,
 			zoom: zoom,
 		};
-	},
-});
+	}
+}
+
+registerConverter(MAP_SERVICE.GOOGLE_MAPS, GoogleMapsUrlConverter);
