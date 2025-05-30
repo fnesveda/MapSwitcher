@@ -26,8 +26,8 @@ async function addButtonsToOsm(context) {
 			button.addEventListener("mouseenter", () => updateButtonHref(service));
 			div.appendChild(button);
 			
-			const icon = document.createElement("span");
-			icon.setAttribute("class", "icon");
+			const icon = document.createElement("div");
+			icon.setAttribute("class", "icon h-100 w-100");
 			button.appendChild(icon);
 			
 			destinationElement.appendChild(div);

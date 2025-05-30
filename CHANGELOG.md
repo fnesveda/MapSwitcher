@@ -5,6 +5,7 @@ Changelog
 -----------------------------------------------
 ### Fixed
 - Fixed support for Mapy.cz after their rename to Mapy.com
+- Fixed displaying icons in OpenStreetMap buttons
 
 [2.1.0](../../releases/tag/v2.1.0) - 2025-03-25
 -----------------------------------------------
