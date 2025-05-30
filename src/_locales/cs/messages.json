@@ -3,8 +3,8 @@
 	"extension_description": {"message": "Přidá do různých mapových služeb tlačítka pro otevření stejné pozice na mapě v jiných mapových službách."},
 	"visible_buttons_header": {"message": "Zobrazit tlačítka na přepínání do"},
 	"button_options_header": {"message": "Možnosti tlačítek"},
-	"mapy_cz_use_outdoor_for_basic": {"message": "Použít Turistickou mapu místo Základní mapy v Mapy.cz"},
+	"mapy_com_use_outdoor_for_basic": {"message": "Použít Turistickou mapu místo Základní mapy v Mapy.com"},
 	"GOOGLE_MAPS": {"message": "Mapy Google"},
-	"MAPY_CZ": {"message": "Mapy.cz"},
+	"MAPY_COM": {"message": "Mapy.com"},
 	"OPEN_STREET_MAP": {"message": "OpenStreetMap"}
 }

@@ -1,11 +1,11 @@
 const defaultOptions = {
-	optionsVersion: "2.0",
+	optionsVersion: "3.0",
 	shownButtons: {
 		[MAP_SERVICE.GOOGLE_MAPS]: true,
-		[MAP_SERVICE.MAPY_CZ]: true,
+		[MAP_SERVICE.MAPY_COM]: true,
 		[MAP_SERVICE.OPEN_STREET_MAP]: false,
 	},
-	mapyCzUseOutdoorForBasic: true,
+	mapyComUseOutdoorForBasic: true,
 };
 
 // Saves options to chrome.storage.sync, returns a promise to maybe let the user know when it's done
@@ -15,29 +15,46 @@ async function saveOptionsToStorage(options) {
 	});
 }
 
+async function migrateOptionsToLatestVersion(optionsFromStorage) {
+	// Check if the options are already at the latest version
+	let migratedOptions = structuredClone(optionsFromStorage);
+	
+	if (!migratedOptions.optionsVersion || migratedOptions.optionsVersion === '1.0') {
+		// migrate from version 1.0 to 2.0
+		migratedOptions = {
+			optionsVersion: '2.0',
+			shownButtons: {
+				[MAP_SERVICE.GOOGLE_MAPS]: migratedOptions.showGMapsButton,
+				[OLD_MAP_SERVICE.MAPY_CZ]: migratedOptions.showMapyczButton,
+				[MAP_SERVICE.OPEN_STREET_MAP]: false,
+			},
+			mapyCzUseOutdoorForBasic: migratedOptions.mapyCzUseOutdoorForBasic || true,
+		};
+	}
+	
+	if (migratedOptions.optionsVersion === '2.0') {
+		migratedOptions = {
+			optionsVersion: '3.0',
+			shownButtons: {
+				[MAP_SERVICE.GOOGLE_MAPS]: migratedOptions.shownButtons[MAP_SERVICE.GOOGLE_MAPS],
+				[MAP_SERVICE.MAPY_COM]: migratedOptions.shownButtons[OLD_MAP_SERVICE.MAPY_CZ],
+				[MAP_SERVICE.OPEN_STREET_MAP]: migratedOptions.shownButtons[MAP_SERVICE.OPEN_STREET_MAP],
+			},
+			mapyComUseOutdoorForBasic: migratedOptions.mapyCzUseOutdoorForBasic || true,
+		};
+	}
+	
+	// Save the migrated options back to storage
+	await saveOptionsToStorage(migratedOptions);
+	
+	return migratedOptions;
+}
+
 // Loads options from chrome.storage.sync, if unavailable, returns default options
 async function loadOptionsFromStorage() {
 	const retrievedStorage = await chrome.storage.sync.get({ options: defaultOptions });
-	if (!retrievedStorage?.options) {
-		await chrome.storage.sync.set({ options: defaultOptions });
-		return structuredClone(values.defaultOptions);
-	}
-	if (retrievedStorage.options.optionsVersion === '1.0') {
-		// migrate from version 1.0 to 2.0
-		const migratedOptions = Object.assign(
-			{},
-			structuredClone(defaultOptions),
-			{
-				shownButtons: {
-					[MAP_SERVICE.GOOGLE_MAPS]: retrievedStorage.options.showGMapsButton,
-					[MAP_SERVICE.MAPY_CZ]: retrievedStorage.options.showMapyczButton,
-					[MAP_SERVICE.OPEN_STREET_MAP]: false,
-				},
-			},
-		)
-		await chrome.storage.sync.set({ options: migratedOptions });
-		return migratedOptions;
-	}
 	
-	return retrievedStorage.options;
+	const resolvedOptions = await migrateOptionsToLatestVersion(retrievedStorage?.options ?? defaultOptions);
+	
+	return resolvedOptions;
 }

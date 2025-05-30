@@ -1,16 +1,16 @@
-class MapyCzUrlConverter extends UrlConverter {
+class MapyComUrlConverter extends UrlConverter {
 	universalToUrl(universal) {
 		let lon = universal.lon;
 		let lat = universal.lat;
 		let zoom = Math.round(universal.zoom);
 		
-		let type = this.extensionOptions.mapyCzUseOutdoorForBasic ? "turisticka" : "zakladni";
+		let type = this.extensionOptions.mapyComUseOutdoorForBasic ? "turisticka" : "zakladni";
 		if (universal.type == "satellite") {
 			type = "letecka";
 		}
 		
 		// put the URL together
-		return `https://www.mapy.cz/${type}?x=${lon}&y=${lat}&z=${zoom}&l=0`;
+		return `https://www.mapy.com/${type}?x=${lon}&y=${lat}&z=${zoom}&l=0`;
 	}
 	
 	urlToUniversal(url) {
@@ -55,4 +55,4 @@ class MapyCzUrlConverter extends UrlConverter {
 	}
 }
 
-registerConverter(MAP_SERVICE.MAPY_CZ, MapyCzUrlConverter);
+registerConverter(MAP_SERVICE.MAPY_COM, MapyComUrlConverter);

@@ -9,6 +9,6 @@
 	background-image: var(--google-maps-bw-button-image);
 }
 
-.map-switch-button[data-map-switcher-destination="MAPY_CZ"] .icon {
-	background-image: var(--mapy-cz-bw-button-image);
+.map-switch-button[data-map-switcher-destination="MAPY_COM"] .icon {
+	background-image: var(--mapy-com-bw-button-image);
 }

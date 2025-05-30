@@ -3,7 +3,7 @@
 	"name": "__MSG_extension_name__",
 	"description": "__MSG_extension_description__",
 	"default_locale": "en",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "{0516BC41-6FA3-4326-87FE-7EA9101412FE}"
@@ -30,7 +30,7 @@
 				"scripts/js/options.js",
 				"scripts/js/urls/common.js",
 				"scripts/js/urls/google_maps.js",
-				"scripts/js/urls/mapy_cz.js",
+				"scripts/js/urls/mapy_com.js",
 				"scripts/js/urls/open_street_map.js",
 				"scripts/js/buttons/common.js",
 				"scripts/js/buttons/google_maps.js"
@@ -38,19 +38,19 @@
 			"css": ["styles/common.css", "styles/google_maps.css"]
 		},
 		{
-			"matches": ["*://*.mapy.cz/*"],
+			"matches": ["*://*.mapy.com/*"],
 			"js": [
 				"scripts/js/consts.js",
 				"scripts/js/utils.js",
 				"scripts/js/options.js",
 				"scripts/js/urls/common.js",
 				"scripts/js/urls/google_maps.js",
-				"scripts/js/urls/mapy_cz.js",
+				"scripts/js/urls/mapy_com.js",
 				"scripts/js/urls/open_street_map.js",
 				"scripts/js/buttons/common.js",
-				"scripts/js/buttons/mapy_cz.js"
+				"scripts/js/buttons/mapy_com.js"
 			],
-			"css": ["styles/common.css", "styles/mapy_cz.css"]
+			"css": ["styles/common.css", "styles/mapy_com.css"]
 		},
 		{
 			"matches": ["*://*.openstreetmap.org/*"],
@@ -60,7 +60,7 @@
 				"scripts/js/options.js",
 				"scripts/js/urls/common.js",
 				"scripts/js/urls/google_maps.js",
-				"scripts/js/urls/mapy_cz.js",
+				"scripts/js/urls/mapy_com.js",
 				"scripts/js/urls/open_street_map.js",
 				"scripts/js/buttons/common.js",
 				"scripts/js/buttons/open_street_map.js"

@@ -1,6 +1,6 @@
-// adds map switcher buttons to Mapy.cz
-async function addButtonsToMapyCZ(context) {
-	if (location.hostname.indexOf("mapy.cz") < 0) return;
+// adds map switcher buttons to Mapy.com
+async function addButtonsToMapyCom(context) {
+	if (location.hostname.indexOf("mapy.com") < 0) return;
 	
 	const { options, currentMapInfo } = context;
 	
@@ -12,7 +12,7 @@ async function addButtonsToMapyCZ(context) {
 	buttonWrapper.setAttribute("id", "map-switch-button-wrapper");
 	
 	for (const service of Object.values(MAP_SERVICE)) {
-		if (service === MAP_SERVICE.MAPY_CZ) continue;
+		if (service === MAP_SERVICE.MAPY_COM) continue;
 		
 		if (options.shownButtons[service]) {
 			const button = document.createElement("a");
@@ -38,10 +38,10 @@ async function addButtonsToMapyCZ(context) {
 	
 	if (buttonWrapper.hasChildNodes()) {
 		const destinationElement = await waitForElement(".map-controls__topToolbar__leftTools", 2000);
-		if (!destinationElement) throw new Error("Could not find destination element for Mapy.cz buttons");
+		if (!destinationElement) throw new Error("Could not find destination element for Mapy.com buttons");
 		
 		destinationElement.appendChild(buttonWrapper);
 	}
 }
 
-registerButtonAdder(addButtonsToMapyCZ);
+registerButtonAdder(addButtonsToMapyCom);

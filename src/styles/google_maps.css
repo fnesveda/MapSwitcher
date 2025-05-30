@@ -47,9 +47,9 @@
 	border-right: solid 1px var(--button-separator-color);
 }
 
-.map-switch-button[data-map-switcher-destination="MAPY_CZ"] {
+.map-switch-button[data-map-switcher-destination="MAPY_COM"] {
 	--button-width: 32px;
-	--button-background-image: var(--mapy-cz-button-image);
+	--button-background-image: var(--mapy-com-button-image);
 }
 
 .map-switch-button[data-map-switcher-destination="OPEN_STREET_MAP"] {

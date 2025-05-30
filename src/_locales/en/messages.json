@@ -3,8 +3,8 @@
 	"extension_description": {"message" :"Adds buttons to various map services for opening the same location in different map services."},
 	"visible_buttons_header": {"message": "Show buttons to switch to"},
 	"button_options_header": {"message": "Button options"},
-	"mapy_cz_use_outdoor_for_basic": {"message": "Use \"Outdoor\" instead of \"Basic\" map in Mapy.cz"},
+	"mapy_com_use_outdoor_for_basic": {"message": "Use \"Outdoor\" instead of \"Basic\" map in Mapy.com"},
 	"GOOGLE_MAPS": {"message": "Google Maps"},
-	"MAPY_CZ": {"message": "Mapy.cz"},
+	"MAPY_COM": {"message": "Mapy.com"},
 	"OPEN_STREET_MAP": {"message": "OpenStreetMap"}
 }

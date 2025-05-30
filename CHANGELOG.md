@@ -1,6 +1,11 @@
 Changelog
 =========
 
+[2.1.1](../../releases/tag/v2.1.1) - 2025-05-30
+-----------------------------------------------
+### Fixed
+- Fixed support for Mapy.cz after their rename to Mapy.com
+
 [2.1.0](../../releases/tag/v2.1.0) - 2025-03-25
 -----------------------------------------------
 ### Added
